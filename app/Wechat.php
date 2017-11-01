@@ -75,11 +75,11 @@ class Wechat extends Model
     /**
      * 群发消息
      */
-    public static function sendMessage($title, $time, $url)
+    public static function sendMessage($title, $time,$info, $url)
     {
         $wechat = app('wechat');
         $broadcast = $wechat->broadcast;
-        $res = $broadcast->sendText("\n【新任务】\n \n 任务名称：\n\n {$title} \n\n 将于 {$time} 开始。 \n\n  <a href='{$url}'>立即报名</a> \n");
+        $res = $broadcast->sendText("\n【新任务】\n \n 任务名称：\n\n {$title} \n\n 将于 {$time} 开始。 \n\n 任务需求:\n{$info} \n\n  <a href='{$url}'>立即报名</a> \n");
         if ($res['errcode'] == '0') {
             return true;
         } else {

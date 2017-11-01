@@ -172,7 +172,7 @@ class AdminController extends Controller
             // 报名页面
            $url = url('admin/signUp') . "?task_id=" . $res->id;
             //发布成功 推送给所有人一个消息
-            $result = Wechat::sendMessage($task['name'],$task['start_time'], $url);
+            $result = Wechat::sendMessage($task['name'],$task['start_time'],$task['brief'], $url);
            if ($result){
                return view('admin.success');
            }else{
